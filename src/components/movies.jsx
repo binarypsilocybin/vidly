@@ -36,7 +36,7 @@ class Movies extends React.Component {
     this.setState({ currentPage: page})
   }
   handleGenreSelect = genre => {
-    console.log(genre);
+    this.setState({ selectedGenre: genre})
   }
   render() {
     const { length: count } = this.state.movies;
@@ -48,9 +48,10 @@ class Movies extends React.Component {
 
     return (
       <div className="row">
-        
         <div className="col-3">
-          <ListGroup items={this.state.genres} textProperty="name" valueProperty="_id" onItemSelect={this.handleGenreSelect}/>
+          <ListGroup items={this.state.genres}
+          selectedItem={this.state.selectedGenre}
+          onItemSelect={this.handleGenreSelect}/>
         </div>
         <div className="col">
         <p>Showing {count} movies in the database</p>
